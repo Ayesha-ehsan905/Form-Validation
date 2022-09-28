@@ -3,7 +3,7 @@ const SignupSchema = yup.object().shape({
   FirstName: yup
     .string()
     .required()
-    .matches(/^[(\w\w+)\s(\w+)]+$/, "Only Alphabets")
+    .matches(/^[(A-Za-z)\s(A-Za-z)]+$/, "Only Alphabets")
     .min(3),
   Email: yup.string().required(),
   PhoneNumber: yup.string().required().max(12),
@@ -18,7 +18,7 @@ const SignupSchema = yup.object().shape({
     .matches(/^[0-9]+$/, "Must be only digits")
     .min(5, "Must be exactly 5 digits")
     .max(5, "Must be exactly 5 digits"),
-  Gender: yup.boolean().required(),
+  //   Gender: yup.boolean().required(),
 });
 
 export default SignupSchema;
