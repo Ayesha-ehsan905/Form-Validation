@@ -5,6 +5,8 @@ import SignupSchema from "../utlis/SignupSchema";
 import { useRef, useState } from "react";
 
 const FormValidation = () => {
+  const [gender, setgender] = useState(null);
+  const [isSubmit, setsubmit] = useState(false);
   const {
     register,
     handleSubmit,
@@ -15,6 +17,10 @@ const FormValidation = () => {
 
   const onSubmit = (data) => {
     console.log(JSON.stringify(data));
+  };
+  const handleClick = () => {
+    setsubmit(true);
+    console.log(gender);
   };
 
   return (
@@ -163,19 +169,43 @@ const FormValidation = () => {
             <div className="flex flex-wrap formbold--mx-3">
               <div className="w-full sm:w-half formbold-px-3">
                 <div className="formbold-mb-5">
-                  <input type="radio" {...register("Gender")} name="gender" />
+                  <input
+                    type="radio"
+                    {...register("Gender")}
+                    name="gender"
+                    value="Female"
+                    onChange={(e) => setgender(e.target.value)}
+                  />
                   <label htmlFor="" style={{ marginRight: "30px" }}>
                     Female
                   </label>
-                  <input type="radio" {...register("Gender")} name="gender" />
+                  <input
+                    type="radio"
+                    {...register("Gender")}
+                    name="gender"
+                    value="Male"
+                    onChange={(e) => setgender(e.target.value)}
+                  />
                   <label htmlFor="">Male</label>
+
+                  {isSubmit ? (
+                    gender == null ? (
+                      <p className="Error">Gender Field Is Required</p>
+                    ) : (
+                      <p></p>
+                    )
+                  ) : (
+                    <p></p>
+                  )}
                 </div>
               </div>
             </div>
           </div>
 
           <div>
-            <button className="formbold-btn">Submit</button>
+            <button className="formbold-btn" onClick={handleClick}>
+              Submit
+            </button>
           </div>
         </form>
       </div>
