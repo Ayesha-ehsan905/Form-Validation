@@ -2,6 +2,7 @@ import "./Style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import SignupSchema from "../utlis/SignupSchema";
+import { useRef, useState } from "react";
 
 const FormValidation = () => {
   const {
@@ -15,6 +16,7 @@ const FormValidation = () => {
   const onSubmit = (data) => {
     console.log(JSON.stringify(data));
   };
+
   return (
     <div className="formbold-main-wrapper">
       <div className="formbold-form-wrapper">
@@ -161,26 +163,11 @@ const FormValidation = () => {
             <div className="flex flex-wrap formbold--mx-3">
               <div className="w-full sm:w-half formbold-px-3">
                 <div className="formbold-mb-5">
-                  <input
-                    type="radio"
-                    {...register("Gender")}
-                    name="gender"
-                    value="true"
-                  />
-                  <label htmlFor="">Female</label>
-                  {errors.Gender && (
-                    <p className="Error">{errors.Gender.message}</p>
-                  )}
-                </div>
-              </div>
-              <div className="w-full sm:w-half formbold-px-3">
-                <div className="formbold-mb-5">
-                  <input
-                    type="radio"
-                    {...register("Gender")}
-                    name="gender"
-                    value="true"
-                  />
+                  <input type="radio" {...register("Gender")} name="gender" />
+                  <label htmlFor="" style={{ marginRight: "30px" }}>
+                    Female
+                  </label>
+                  <input type="radio" {...register("Gender")} name="gender" />
                   <label htmlFor="">Male</label>
                 </div>
               </div>
