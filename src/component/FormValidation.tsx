@@ -2,7 +2,7 @@ import "./Style.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import SignupSchema from "../utlis/SignupSchema";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const FormValidation = () => {
   const [gender, setgender] = useState(null);
